@@ -18,7 +18,7 @@ dbus-monitor --profile "interface=org.freedesktop.DBus.Properties,member=Propert
         pkill spotify
         spotify 2&>1 /dev/null &
         sleep 4
-        dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+        dbus-send --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
     # polybar output
     else
