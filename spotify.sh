@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-echo "bruh"
+
+playerctl --player=spotify metadata --format "{{artist}} - {{title}}"
