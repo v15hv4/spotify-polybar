@@ -28,7 +28,7 @@ dbus-monitor --profile "interface=org.freedesktop.DBus.Properties,member=Propert
 
         # shorten displayed title if it's too long (greater than 30 characters)
         if [ ${#TITLE} -gt 30 ]; then
-            TITLE=$(echo $TITLE | sed 's/(.*)//g')
+            TITLE=$(echo $TITLE | sed 's/(.*)\|- .*//g')
         fi
 
         # relaunch if ad playing
