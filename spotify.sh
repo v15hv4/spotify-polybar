@@ -26,6 +26,11 @@ dbus-monitor --profile "interface=org.freedesktop.DBus.Properties,member=Propert
         ARTIST=$(echo "$METADATA" | grep -A2 "xesam:artist" | tail -n 1 | sed 's/.*"\(.*\)".*/\1/g')
         TITLE=$(echo "$METADATA" | grep -A1 "xesam:title" | tail -n 1 | sed 's/.*"\(.*\)".*/\1/g')
 
+        # shorten displayed title if it's too long (greater than 30 characters)
+        if [ ${#TITLE} -gt 30 ]; then
+            TITLE=$(echo $TITLE | sed 's/(.*)//g')
+        fi
+
         # relaunch if ad playing
         if [ "$ADSKIP" = 1 ] && [[ "$TITLE" = "Advertisement" || "$TITLE" = "Spotify" ]]; then
             pkill spotify
