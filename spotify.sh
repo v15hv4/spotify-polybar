@@ -19,7 +19,7 @@ dbus-monitor --profile "interface=org.freedesktop.DBus.Properties,member=Propert
         STATUS=$(echo $STATUSRAW | tail -n 1 | sed 's/.*"\(.*\)".*/\1/g')
 
         # change toggle icon based on status
-        polybar-msg hook spotify-control $([ "$STATUS" = "Playing" ] && echo 1 || echo 2) | </dev/null &>/dev/null
+        polybar-msg action '#spotify-control.hook.'"$([ $STATUS = 'Playing' ] && echo 0 || echo 1)" </dev/null &>/dev/null
 
         # parse metadata
         METADATA=$(dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' string:'Metadata') 
